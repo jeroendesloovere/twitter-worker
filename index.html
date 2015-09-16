@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+<link rel="stylesheet" href="widget.css">
+<script>
+var aWorker = new Worker("twitterWorker.js");
+aWorker.onmessage = onWorkerMessage;
+
+var thumbsUp = new Image();
+thumbsUp.src = "thumbsUp.png";
+var thumbsDown = new Image();
+thumbsDown.src = "thumbsDown.png";
+
+function onWorkerMessage(evt)
+{
+	data = evt.data;
+	document.getElementById("search").innerHTML = data.query;
+	document.getElementById("count").innerHTML = data.count;
+
+	var sentiment = document.getElementById("sentiment");
+	sentiment.innerHTML = data.sentiment;
+	var hand = document.getElementById("hand");
+	if (data.sentiment > 0) {
+		hand.style.backgroundImage = "url('thumbsUp.png')";
+		sentiment.setAttribute("class", "up");
+	} else if (data.sentiment < 0) {
+		hand.style.backgroundImage = "url('thumbsDown.png')";
+		sentiment.setAttribute("class", "down");
+	} else {
+		hand.style.backgroundImage = "none";
+		sentiment.setAttribute("class", "none");
+	}
+}
+</script>
+</head>
+<body>
+	<div id="sentimentWidget">
+		<p id="how">How the Twittersphere is feeling about:</p>
+		<p id="search"></p>
+		<div id="handContainer">
+			<div id="hand"></div>
+			<p id="sentiment"></p>
+		</div>
+		<p class="count">Sentiment based on <span id="count"></span> tweets</p>
+	</div>
+</body>
+</html>

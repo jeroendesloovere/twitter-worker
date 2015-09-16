@@ -1,0 +1,52 @@
+div#sentimentWidget {
+	background-color: black;
+	width: 200px;
+	padding: 10px 5px 5px 5px;
+	text-align: center;
+	font-family: Verdana, Arial, sans-serif;
+	color: white;
+}
+p#search {
+	color: #d9bd8f;
+	font-size: 400%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 25px;
+}
+div#handContainer {
+	position: relative;
+}
+div#hand {
+	position: relative;
+	top: 0px;
+	left: 36px;
+	min-width: 128px;
+	min-height: 128px;
+	background-repeat: no-repeat;
+}
+p#sentiment {
+	position: absolute;
+	width: 128px;
+	font-size: 160%;
+}
+.none {
+	top: 0px;
+	left: 36px;
+	color: white;
+}
+.up {
+	top: 46px;
+	left: 46px;
+	color: black;
+}
+.down {
+	top: 0px;
+	left: 36px;
+	color: black;
+}
+p.count {
+	padding-top: 20px;
+	color: lightgray;
+	font-size: 60%;
+}
